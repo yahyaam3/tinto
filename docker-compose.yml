@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    image: tintoreria
+    container_name: tintoreria-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - tintoreria
+
+  db:
+    image: mysql:8.0
+    container_name: tintoreria-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - "3306:3306"
+    networks:
+      - tintoreria
+
+  nginx:
+    image: nginx:alpine
+    container_name: tintoreria-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d/
+    networks:
+      - tintoreria
+
+  redis:
+    image: redis:alpine
+    container_name: tintoreria-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - tintoreria
+    volumes:
+      - redisdata:/data
+
+networks:
+  tintoreria:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
+  redisdata:
+    driver: local 
