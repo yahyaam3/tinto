@@ -167,13 +167,30 @@
 
         <div class="cliente-info">
             <div class="cliente-titulo">DATOS DEL CLIENTE</div>
-            {{ $factura->cliente->nombre }}<br>
-            @if($factura->cliente->direccion)
-            {{ $factura->cliente->direccion }}<br>
-            @endif
-            @if($factura->cliente->nif)
-            NIF: {{ $factura->cliente->nif }}
-            @endif
+            <table style="width: 100%; margin-top: 10px; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 5px; font-weight: bold;">Cliente:</td>
+                    <td style="padding: 5px;">{{ $factura->cliente->nombre }}</td>
+                </tr>
+                @if($factura->cliente->nif)
+                <tr>
+                    <td style="padding: 5px; font-weight: bold;">NIF:</td>
+                    <td style="padding: 5px;">{{ $factura->cliente->nif }}</td>
+                </tr>
+                @endif
+                @if($factura->cliente->telefono)
+                <tr>
+                    <td style="padding: 5px; font-weight: bold;">Teléfono:</td>
+                    <td style="padding: 5px;">{{ $factura->cliente->telefono }}</td>
+                </tr>
+                @endif
+                @if($factura->cliente->direccion)
+                <tr>
+                    <td style="padding: 5px; font-weight: bold;">Dirección:</td>
+                    <td style="padding: 5px;">{{ $factura->cliente->direccion }}</td>
+                </tr>
+                @endif
+            </table>
         </div>
 
         <table>

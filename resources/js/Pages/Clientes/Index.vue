@@ -47,6 +47,10 @@
                         </template>
                         
                         <!-- Plantilla para dirección con valor por defecto -->
+                        <template #nif="{ item: cliente }">
+                            {{ cliente.nif || '-' }}
+                        </template>
+                        
                         <template #direccion="{ item: cliente }">
                             {{ cliente.direccion || '-' }}
                         </template>
@@ -115,6 +119,7 @@ const columns = [
     { key: 'nombre', label: 'Nombre' },
     { key: 'email', label: 'Email' },
     { key: 'telefono', label: 'Teléfono' },
+    { key: 'nif', label: 'NIF' },
     { key: 'direccion', label: 'Dirección' },
     { key: 'estado', label: 'Estado' }
 ];

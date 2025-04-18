@@ -44,6 +44,16 @@
                             >
                         </div>
 
+                        <!-- NIF (Opcional) -->
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700">NIF (Opcional)</label>
+                            <input 
+                                type="text"
+                                v-model="form.nif"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                            >
+                        </div>
+
                         <!-- Dirección (Opcional) -->
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-700">Dirección </label>
@@ -95,6 +105,7 @@ const form = ref({
     nombre: props.cliente?.nombre || '',
     email: props.cliente?.email || '',
     telefono: props.cliente?.telefono || '',
+    nif: props.cliente?.nif || '',
     direccion: props.cliente?.direccion || '',
     estado: 'activo'
 });

@@ -42,6 +42,7 @@ class ClienteController extends Controller
             'telefono' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255|unique:clientes,email',
             'direccion' => 'nullable|string|max:255',
+            'nif' => 'nullable|string|max:20',
         ]);
 
         $validated['estado'] = 'activo';
@@ -77,6 +78,7 @@ class ClienteController extends Controller
             'telefono' => 'nullable|string|max:20',
             'email' => 'nullable|email|max:255|unique:clientes,email,' . $cliente->id,
             'direccion' => 'nullable|string|max:255',
+            'nif' => 'nullable|string|max:20',
         ]);
 
         $cliente->update($validated);

@@ -15,7 +15,8 @@ class Cliente extends Model
         'telefono',
         'email',
         'direccion',
-        'estado'
+        'estado',
+        'nif'
     ];
 
     protected $attributes = [
