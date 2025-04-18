@@ -1,0 +1,47 @@
+FROM php:8.1-fpm
+
+# Instalar dependencias
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    nginx \
+    supervisor
+
+# Instalar extensiones PHP
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+
+# Configurar Nginx
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Instalar Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Preparar directorio de la aplicación
+WORKDIR /app
+COPY . /app
+
+# Instalar dependencias de PHP
+RUN composer install --no-interaction --no-dev --optimize-autoloader
+
+# Instalar Node.js y compilar assets
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install \
+    && npm run build
+
+# Configurar permisos
+RUN chmod -R 775 /app/storage /app/bootstrap/cache
+
+# Configurar supervisord
+RUN echo "[supervisord]\nnodaemon=true\n\n[program:nginx]\ncommand=nginx -g 'daemon off;'\n\n[program:php-fpm]\ncommand=php-fpm" > /etc/supervisor/conf.d/supervisord.conf
+
+# Exponer puerto
+EXPOSE 8080
+
+# Comando de inicio
+CMD ["/usr/bin/supervisord"]
