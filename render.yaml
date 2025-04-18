@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: tintoreria
+    env: php
+    buildCommand: "composer install --no-interaction --prefer-dist --optimize-autoloader && npm install && npm run build && php artisan migrate --force"
+    startCommand: "php artisan serve --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tintoreria-db
+          property: connectionString
+      - key: APP_URL
+        value: https://tintoreria.onrender.com
+
+databases:
+  - name: tintoreria-db
+    ipAllowList: []
