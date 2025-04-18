@@ -34,58 +34,56 @@
                     </div>
                 </div>
 
-                <!-- Tabla -->
+                <!-- Tabla Responsive -->
                 <div class="bg-white rounded-lg shadow overflow-hidden">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Teléfono</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Dirección</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
-                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <tr v-for="cliente in clientes.data" :key="cliente.id">
-                                <td class="px-6 py-4 whitespace-nowrap">{{ cliente.nombre }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ cliente.email || '-' }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ cliente.telefono }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ cliente.direccion || '-' }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span 
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
-                                        :class="{
-                                            'bg-green-100 text-green-800': cliente.estado === 'activo',
-                                            'bg-red-100 text-red-800': cliente.estado === 'inactivo'
-                                        }"
-                                    >
-                                        {{ cliente.estado }}
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <Link 
-                                        :href="`/clientes/${cliente.id}/edit`"
-                                        class="text-indigo-600 hover:text-indigo-900 mr-3"
-                                    >
-                                        Editar
-                                    </Link>
-                                    <button
-                                        @click="eliminarCliente(cliente)"
-                                        class="text-red-600 hover:text-red-900"
-                                    >
-                                        Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr v-if="clientes.data.length === 0">
-                                <td colspan="5" class="px-6 py-4 text-center text-gray-500">
-                                    No hay registros para mostrar
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <ResponsiveTable 
+                        :columns="columns" 
+                        :items="clientes" 
+                        :hasActions="true"
+                    >
+                        <!-- Plantilla para email con valor por defecto -->
+                        <template #email="{ item: cliente }">
+                            {{ cliente.email || '-' }}
+                        </template>
+                        
+                        <!-- Plantilla para dirección con valor por defecto -->
+                        <template #direccion="{ item: cliente }">
+                            {{ cliente.direccion || '-' }}
+                        </template>
+                        
+                        <!-- Plantilla para estado con estilo condicional -->
+                        <template #estado="{ item: cliente }">
+                            <span 
+                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
+                                :class="{
+                                    'bg-green-100 text-green-800': cliente.estado === 'activo',
+                                    'bg-red-100 text-red-800': cliente.estado === 'inactivo'
+                                }"
+                            >
+                                {{ cliente.estado }}
+                            </span>
+                        </template>
+                        
+                        <!-- Plantilla para las acciones -->
+                        <template #actions="{ item: cliente }">
+                            <!-- En vista móvil, los botones son más grandes y más fáciles de tocar -->
+                            <Link 
+                                :href="`/clientes/${cliente.id}/edit`"
+                                class="md:text-indigo-600 md:hover:text-indigo-900 md:mr-3 px-3 py-2 md:p-0 bg-indigo-100 md:bg-transparent text-indigo-700 rounded-md inline-flex items-center"
+                            >
+                                <svg class="md:hidden w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                                Editar
+                            </Link>
+                            
+                            <button
+                                @click="eliminarCliente(cliente)"
+                                class="md:text-red-600 md:hover:text-red-900 px-3 py-2 md:p-0 bg-red-100 md:bg-transparent text-red-700 rounded-md inline-flex items-center mt-2 md:mt-0"
+                            >
+                                <svg class="md:hidden w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                Eliminar
+                            </button>
+                        </template>
+                    </ResponsiveTable>
                 </div>
 
                 <!-- Paginación -->
@@ -102,6 +100,7 @@ import { ref, watch } from 'vue';
 import { Link, router } from '@inertiajs/vue3';
 import SidebarLayout from '@/Layouts/SidebarLayout.vue';
 import Pagination from '@/Components/Pagination.vue';
+import ResponsiveTable from '@/Components/ResponsiveTable.vue';
 
 const props = defineProps({
     clientes: Object,
@@ -110,6 +109,15 @@ const props = defineProps({
 
 const search = ref(props.filters.search || '');
 const estado = ref(props.filters.estado || 'todos');
+
+// Definición de columnas para la tabla responsiva
+const columns = [
+    { key: 'nombre', label: 'Nombre' },
+    { key: 'email', label: 'Email' },
+    { key: 'telefono', label: 'Teléfono' },
+    { key: 'direccion', label: 'Dirección' },
+    { key: 'estado', label: 'Estado' }
+];
 
 watch([search, estado], ([newSearch, newEstado]) => {
     router.get('/clientes', 

@@ -1,0 +1,1 @@
+import r from"./Form-2ce18902.js";import{o,c as t}from"./app-78229063.js";import"./SidebarLayout-b4c334aa.js";import"./_plugin-vue_export-helper-c27b6911.js";const n={__name:"Create",setup(e){return(a,c)=>(o(),t(r))}};export{n as default};

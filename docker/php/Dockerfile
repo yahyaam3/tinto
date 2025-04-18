@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip
+    unzip \
+    netcat-traditional
 
 # Limpiar caché
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -22,14 +23,12 @@ RUN pecl install redis && docker-php-ext-enable redis
 # Obtener último Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copiar configuración personalizada de PHP
-COPY conf.d/custom.ini /usr/local/etc/php/conf.d/custom.ini
-
-# Configurar permisos para www-data
-RUN mkdir -p /home/www-data/.composer && \
-    chown -R www-data:www-data /home/www-data
-
 # Establecer directorio de trabajo
 WORKDIR /var/www
 
-USER www-data 
+# Copiar script de inicialización
+COPY docker/php/init.sh /usr/local/bin/init.sh
+RUN chmod +x /usr/local/bin/init.sh
+
+# Establecer el punto de entrada
+CMD ["/usr/local/bin/init.sh"]

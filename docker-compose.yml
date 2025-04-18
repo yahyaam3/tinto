@@ -9,6 +9,9 @@ services:
     container_name: tintoreria-app
     restart: unless-stopped
     working_dir: /var/www/
+    depends_on:
+      - db
+      - redis
     volumes:
       - ./:/var/www
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
@@ -20,10 +23,10 @@ services:
     container_name: tintoreria-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_DATABASE: tintoreria
+      MYSQL_ROOT_PASSWORD: tintoreria
+      MYSQL_PASSWORD: tintoreria
+      MYSQL_USER: tintoreria
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
@@ -56,6 +59,19 @@ services:
       - tintoreria
     volumes:
       - redisdata:/data
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: tintoreria-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: tintoreria
+    networks:
+      - tintoreria
 
 networks:
   tintoreria:

@@ -86,6 +86,16 @@ class ClienteController extends Controller
 
     public function destroy(Cliente $cliente)
     {
+        // Verificar si el cliente tiene facturas o albaranes asociados
+        if ($cliente->facturas()->count() > 0) {
+            return redirect('/clientes')->with('error', 'No se puede eliminar el cliente porque tiene facturas asociadas');
+        }
+        
+        if ($cliente->albaranes()->count() > 0) {
+            return redirect('/clientes')->with('error', 'No se puede eliminar el cliente porque tiene albaranes asociados');
+        }
+        
+        // Si no tiene relaciones, proceder con la eliminación
         $cliente->delete();
         return redirect('/clientes')->with('success', 'Cliente eliminado correctamente');
     }

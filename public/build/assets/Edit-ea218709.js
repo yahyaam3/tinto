@@ -1,0 +1,1 @@
+import t from"./Form-2ce18902.js";import{o as r,c}from"./app-78229063.js";import"./SidebarLayout-b4c334aa.js";import"./_plugin-vue_export-helper-c27b6911.js";const m={__name:"Edit",props:{cliente:{type:Object,required:!0}},setup(e){return(o,i)=>(r(),c(t,{cliente:e.cliente},null,8,["cliente"]))}};export{m as default};

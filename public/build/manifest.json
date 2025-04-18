@@ -1,0 +1,296 @@
+{
+  "SidebarLayout.css": {
+    "file": "assets/SidebarLayout-c71ec6a3.css",
+    "src": "SidebarLayout.css"
+  },
+  "_Pagination-b6bc7c28.js": {
+    "file": "assets/Pagination-b6bc7c28.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_SidebarLayout-b4c334aa.js": {
+    "css": [
+      "assets/SidebarLayout-c71ec6a3.css"
+    ],
+    "file": "assets/SidebarLayout-b4c334aa.js",
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ]
+  },
+  "__plugin-vue_export-helper-c27b6911.js": {
+    "file": "assets/_plugin-vue_export-helper-c27b6911.js"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-808443ae.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-d7236a19.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-54cf6086.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-e3456d12.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-d2f05935.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-aa759986.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
+    "file": "assets/fa-v4compatibility-30f6abf6.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-0ce9033c.woff2",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-8aaeafaf.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/Pages/Admin/Dashboard.vue": {
+    "file": "assets/Dashboard-d999da74.js",
+    "imports": [
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Admin/Dashboard.vue"
+  },
+  "resources/js/Pages/Albaranes/Form.vue": {
+    "file": "assets/Form-50096728.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Albaranes/Form.vue"
+  },
+  "resources/js/Pages/Albaranes/Index.vue": {
+    "file": "assets/Index-4119a456.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "_Pagination-b6bc7c28.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Albaranes/Index.vue"
+  },
+  "resources/js/Pages/Albaranes/Show.vue": {
+    "file": "assets/Show-7cd91750.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Albaranes/Show.vue"
+  },
+  "resources/js/Pages/Auth/Login.css": {
+    "file": "assets/Login-87864b4f.css",
+    "src": "resources/js/Pages/Auth/Login.css"
+  },
+  "resources/js/Pages/Auth/Login.vue": {
+    "css": [
+      "assets/Login-87864b4f.css"
+    ],
+    "file": "assets/Login-14326901.js",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Auth/Login.vue"
+  },
+  "resources/js/Pages/Clientes/Create.vue": {
+    "file": "assets/Create-43dfdae7.js",
+    "imports": [
+      "resources/js/Pages/Clientes/Form.vue",
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Clientes/Create.vue"
+  },
+  "resources/js/Pages/Clientes/Edit.vue": {
+    "file": "assets/Edit-ea218709.js",
+    "imports": [
+      "resources/js/Pages/Clientes/Form.vue",
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Clientes/Edit.vue"
+  },
+  "resources/js/Pages/Clientes/Form.vue": {
+    "file": "assets/Form-2ce18902.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Clientes/Form.vue"
+  },
+  "resources/js/Pages/Clientes/Index.vue": {
+    "file": "assets/Index-08df502f.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "_Pagination-b6bc7c28.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Clientes/Index.vue"
+  },
+  "resources/js/Pages/Clientes/Show.vue": {
+    "file": "assets/Show-bcddf37b.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Clientes/Show.vue"
+  },
+  "resources/js/Pages/Dashboard.vue": {
+    "file": "assets/Dashboard-d1d55272.js",
+    "imports": [
+      "resources/js/app.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Dashboard.vue"
+  },
+  "resources/js/Pages/Facturas/Create.vue": {
+    "file": "assets/Create-08bdfdaf.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Facturas/Create.vue"
+  },
+  "resources/js/Pages/Facturas/Form.vue": {
+    "file": "assets/Form-dd4e06fa.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Facturas/Form.vue"
+  },
+  "resources/js/Pages/Facturas/Index.vue": {
+    "file": "assets/Index-77cb1916.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "_Pagination-b6bc7c28.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Facturas/Index.vue"
+  },
+  "resources/js/Pages/Facturas/Show.vue": {
+    "file": "assets/Show-16d9b068.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Facturas/Show.vue"
+  },
+  "resources/js/Pages/Productos/Form.vue": {
+    "file": "assets/Form-e2ca1f01.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Productos/Form.vue"
+  },
+  "resources/js/Pages/Productos/Index.vue": {
+    "file": "assets/Index-cee8d21d.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "_Pagination-b6bc7c28.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Productos/Index.vue"
+  },
+  "resources/js/Pages/Welcome.css": {
+    "file": "assets/Welcome-455a3706.css",
+    "src": "resources/js/Pages/Welcome.css"
+  },
+  "resources/js/Pages/Welcome.vue": {
+    "css": [
+      "assets/Welcome-455a3706.css"
+    ],
+    "file": "assets/Welcome-072fc91e.js",
+    "imports": [
+      "resources/js/app.js",
+      "_SidebarLayout-b4c334aa.js",
+      "__plugin-vue_export-helper-c27b6911.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/Pages/Welcome.vue"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app-8aaeafaf.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "assets": [
+      "assets/fa-brands-400-d7236a19.woff2",
+      "assets/fa-brands-400-808443ae.ttf",
+      "assets/fa-regular-400-e3456d12.woff2",
+      "assets/fa-regular-400-54cf6086.ttf",
+      "assets/fa-solid-900-aa759986.woff2",
+      "assets/fa-solid-900-d2f05935.ttf",
+      "assets/fa-v4compatibility-0ce9033c.woff2",
+      "assets/fa-v4compatibility-30f6abf6.ttf"
+    ],
+    "css": [
+      "assets/app-8aaeafaf.css"
+    ],
+    "dynamicImports": [
+      "resources/js/Pages/Admin/Dashboard.vue",
+      "resources/js/Pages/Albaranes/Form.vue",
+      "resources/js/Pages/Albaranes/Index.vue",
+      "resources/js/Pages/Albaranes/Show.vue",
+      "resources/js/Pages/Auth/Login.vue",
+      "resources/js/Pages/Clientes/Create.vue",
+      "resources/js/Pages/Clientes/Edit.vue",
+      "resources/js/Pages/Clientes/Form.vue",
+      "resources/js/Pages/Clientes/Index.vue",
+      "resources/js/Pages/Clientes/Show.vue",
+      "resources/js/Pages/Dashboard.vue",
+      "resources/js/Pages/Facturas/Create.vue",
+      "resources/js/Pages/Facturas/Form.vue",
+      "resources/js/Pages/Facturas/Index.vue",
+      "resources/js/Pages/Facturas/Show.vue",
+      "resources/js/Pages/Productos/Form.vue",
+      "resources/js/Pages/Productos/Index.vue",
+      "resources/js/Pages/Welcome.vue"
+    ],
+    "file": "assets/app-78229063.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

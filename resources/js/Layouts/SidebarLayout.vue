@@ -1,7 +1,20 @@
 <template>
     <div class="min-h-screen bg-gray-100">
-        <!-- Sidebar -->
-        <aside class="fixed inset-y-0 left-0 w-64 bg-indigo-600 text-white overflow-y-auto flex flex-col">
+        <!-- Barra superior móvil -->
+        <div class="lg:hidden bg-indigo-600 text-white p-4 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold">tintorería Pro-E 7'S</a>
+            <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="text-white focus:outline-none">
+                <svg v-if="!isMobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg v-else class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Sidebar para escritorio -->
+        <aside class="hidden lg:flex fixed inset-y-0 left-0 w-64 bg-indigo-600 text-white overflow-y-auto flex-col">
             <!-- Logo -->
             <div class="p-6 border-b border-indigo-500">
                 <a href="/" class="flex items-center">
@@ -9,51 +22,10 @@
                 </a>
             </div>
 
-            <!-- Navegación -->
+            <!-- Navegación escritorio -->
             <nav class="space-y-1 px-2 py-4 flex-grow">
-                <!-- Clientes -->
-                <Link href="/clientes"
-                    class="flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors"
-                    :class="{'bg-indigo-700 text-white': $page.url.startsWith('/clientes'), 'text-indigo-100 hover:bg-indigo-700': !$page.url.startsWith('/clientes')}"
-                >
-                    <svg class="mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                    Clientes
-                </Link>
-
-                <!-- Productos -->
-                <Link href="/productos"
-                    class="flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors"
-                    :class="{'bg-indigo-700 text-white': $page.url.startsWith('/productos'), 'text-indigo-100 hover:bg-indigo-700': !$page.url.startsWith('/productos')}"
-                >
-                    <svg class="mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                    Productos
-                </Link>
-
-                <!-- Albaranes -->
-                <Link href="/albaranes"
-                    class="flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors"
-                    :class="{'bg-indigo-700 text-white': $page.url.startsWith('/albaranes'), 'text-indigo-100 hover:bg-indigo-700': !$page.url.startsWith('/albaranes')}"
-                >
-                    <svg class="mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    Albaranes
-                </Link>
-
-                <!-- Facturas -->
-                <Link href="/facturas"
-                    class="flex items-center px-4 py-3 text-sm font-medium rounded-md transition-colors"
-                    :class="{'bg-indigo-700 text-white': $page.url.startsWith('/facturas'), 'text-indigo-100 hover:bg-indigo-700': !$page.url.startsWith('/facturas')}"
-                >
-                    <svg class="mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                    Facturas
-                </Link>
+                <!-- Enlaces de navegación para escritorio -->
+                <SidebarNavLinks />
             </nav>
 
             <!-- Botón de Admin en la parte inferior -->
@@ -66,8 +38,49 @@
             </div>
         </aside>
 
+        <!-- Menú móvil desplegable -->
+        <div v-if="isMobileMenuOpen" class="lg:hidden fixed inset-0 z-40 flex">
+            <!-- Fondo oscuro -->
+            <div class="fixed inset-0 bg-gray-600 bg-opacity-75" @click="isMobileMenuOpen = false"></div>
+            
+            <!-- Panel lateral -->
+            <div class="relative flex-1 flex flex-col max-w-xs w-full bg-indigo-600 text-white">
+                <div class="absolute top-0 right-0 -mr-12 pt-2">
+                    <button @click="isMobileMenuOpen = false" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                        <span class="sr-only">Cerrar menú</span>
+                        <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Navegación móvil -->
+                <div class="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
+                    <div class="flex-shrink-0 flex items-center px-4">
+                        <span class="text-xl font-bold">tintorería Pro-Ecològica 7'S</span>
+                    </div>
+                    <nav class="mt-5 px-2 space-y-1">
+                        <!-- Enlaces de navegación para móvil -->
+                        <SidebarNavLinks />
+                    </nav>
+                </div>
+                
+                <!-- Botón de Admin en la parte inferior móvil -->
+                <div class="flex-shrink-0 flex border-t border-indigo-500 p-4">
+                    <a href="/login" class="flex items-center px-4 py-2 text-indigo-100 hover:bg-indigo-700 rounded-md transition-colors opacity-50 hover:opacity-100">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="flex-shrink-0 w-14">
+                <!-- Espacio en blanco para permitir cerrar haciendo clic -->
+            </div>
+        </div>
+
         <!-- Contenido Principal -->
-        <div class="pl-64">
+        <div class="lg:pl-64">
             <main class="py-6">
                 <div class="mx-auto px-4 sm:px-6 md:px-8">
                     <!-- Mensaje Flash -->
@@ -87,6 +100,11 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import SidebarNavLinks from '@/Components/SidebarNavLinks.vue';
+import { ref } from 'vue';
+
+// Estado para controlar la visibilidad del menú móvil
+const isMobileMenuOpen = ref(false);
 </script>
 
 <style scoped>
